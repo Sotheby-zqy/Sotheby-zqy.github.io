@@ -1,8 +1,852 @@
-<p>Hello 大家好</p>
-<p>我是霸都丶傲天，这是我的个人网站。 </p>
-<p>很高兴你来到这里, 你可以在以下的网站找到我</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张青怡 - 计算机科学与技术硕士 | AI研究员</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cae;
+            --accent-color: #ff7e5f;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --transition: all 0.3s ease;
+        }
 
-<ul>
-  <li> <a href="https://www.zhihu.com/people/AJLoveChina">知乎</a> </li>
-  <li> <a href="http://hejie.nigeerhuo.com">我的博客(已经不更细了,现在在知乎写文章)</a> </li>
-</ul>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        section:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        h4 {
+            color: var(--dark-color);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--light-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background-color: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .awards-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .award-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent-color);
+            flex: 1 1 300px;
+            transition: var(--transition);
+        }
+
+        .award-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .award-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .award-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode section {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4 {
+            color: #bb86fc;
+        }
+
+        body.dark-mode .skill-item {
+            background-color: #2d2d2d;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .skill-item:hover {
+            background-color: #bb86fc;
+        }
+
+        body.dark-mode .project-card,
+        body.dark-mode .award-card {
+            background-color: #2d2d2d;
+            border-color: #333;
+        }
+
+        body.dark-mode .project-desc,
+        body.dark-mode .award-desc {
+            color: #a0a0a0;
+        }
+
+        body.dark-mode .tech-tag {
+            background-color: #333;
+            color: #a0a0a0;
+        }
+
+        body.dark-mode nav {
+            background-color: #1e1e1e;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .nav-links a {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode footer {
+            background-color: #1e1e1e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1>张青怡</h1>
+            <p class="title">计算机科学与技术硕士 | AI研究员</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>159-7982-6810</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>zqy15979826810@163.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>中国·南京</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">张青怡</div>
+            <div class="nav-links">
+                <a href="#about">关于我</a>
+                <a href="#education">教育背景</a>
+                <a href="#experience">工作经历</a>
+                <a href="#projects">项目经验</a>
+                <a href="#skills">技能专长</a>
+                <a href="#awards">荣誉奖项</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2>关于我</h2>
+            <p>我是一名计算机科学与技术专业的硕士研究生，专注于人工智能领域，特别是自然语言处理、计算机视觉和多模态数据分析。我对AI技术的创新应用充满热情，希望在未来工作中深入探索大模型优化、多模态理解等方向，以技术驱动业务增长，创造实际价值。</p>
+            <p>我具备扎实的编程能力和数学建模思维，掌握多种机器学习框架和算法，并在多个实际项目中取得了显著成果。我善于跨领域学习，能够快速适应新技术并将其应用到实际问题中。</p>
+        </section>
+
+        <section id="education">
+            <h2>教育背景</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025.9 - 2028.3</div>
+                    <h3>南京理工大学 | 211/双一流</h3>
+                    <h4>计算机科学与技术专业 硕士</h4>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021.9 - 2025.6</div>
+                    <h3>西南财经大学 | 211/双一流</h3>
+                    <h4>人工智能专业 本科 (排名: 5/35, 前20%)</h4>
+                    <p><strong>主修课程:</strong> Python/Java/Matlab编程、高级机器学习、自然语言处理、数字图像处理、算法交易</p>
+                    <p><strong>荣誉奖项:</strong> 三好学生、学业奖学金、国家励志奖学金、科研创新奖学金、社会实践奖学金</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>工作经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024.7 - 2024.9</div>
+                    <h3 class="timeline-company">成都鱼泡科技有限公司 | NLP算法实习生</h3>
+                    <ul>
+                        <li>AI智能客服意图识别：构建意图分类标签体系，优化大模型微调策略，接入豆包大语言模型API，构建多轮对话意图识别系统，设计动态Prompt模板适配客服场景，将意图识别准确率从82%提升至94%，替代30%人工客服工作量。</li>
+                        <li>Prompt优化与涉黄信息识别：分析涉黄招聘数据特征，设计动态Prompt模板，通过迭代实验将模型识别准确率从73%提升至89%，结合规则过滤与语义匹配，降低误报率15%。</li>
+                        <li>自动化Prompt框架研究：参与复现DSPY框架，适配多场景任务，支持模型自动生成高精度Prompt，提升泛化能力。</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023.7 - 2023.8</div>
+                    <h3 class="timeline-company">四川锐明智通科技有限公司 | 人工智能部数据标注员</h3>
+                    <ul>
+                        <li>使用CVAT专业工具完成多模态数据标注，包括2D边界框标注(车辆/行人/路障)、语义分割及关键点标注，累计处理图像11,000+帧、视频数据500+分钟。</li>
+                        <li>制定标注质量验收标准(IoU≥0.85)，通过多轮校验将标注一致率提升至98%，满足自动驾驶感知模型训练需求，参与标注规范文档编写，定期输出数据质量报告。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>项目经验</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">房地产舆情智能分析系统</h3>
+                        <p class="project-desc">"花旗杯"人工智能-幻觉偏差领域挑战项目，整合东方财富动态数据与知识图谱，通过LLM实现多模态情感分析，输出舆情风险评估报告。</p>
+                        <ul>
+                            <li>负责核心数据采集，使用Selenium+Chrome设计抗反爬方案</li>
+                            <li>实现每日房企股票数据及5000+条评论的自动化抓取</li>
+                            <li>数据更新延迟&lt;15分钟，构建数据治理管道</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">Neo4j</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">智能任务调度系统</h3>
+                        <p class="project-desc">基于LLM的智能任务调度系统，通过迭代算法动态优化模型在边缘-云端的部署策略，实现低延迟高精度推理。</p>
+                        <ul>
+                            <li>实现核心实验模块，包括语义千问、豆包等5个LLM API对接</li>
+                            <li>集成ResNet/DenseNet等CV模型</li>
+                            <li>开发自动化脚本验证不同部署策略下模型精度(±2%)与延迟(&lt;300ms)</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">LLM</span>
+                            <span class="tech-tag">边缘计算</span>
+                            <span class="tech-tag">ResNet</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>技能专长</h2>
+            <h3>编程语言</h3>
+            <div class="skills-container">
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">Matlab</div>
+                <div class="skill-item">微信小程序开发</div>
+            </div>
+            <h3>机器学习/深度学习</h3>
+            <div class="skills-container">
+                <div class="skill-item">PyTorch/TensorFlow</div>
+                <div class="skill-item">CNN/RNN/Transformer</div>
+                <div class="skill-item">自然语言处理</div>
+                <div class="skill-item">计算机视觉</div>
+                <div class="skill-item">多模态分析</div>
+            </div>
+            <h3>数据分析与建模</h3>
+            <div class="skills-container">
+                <div class="skill-item">时间序列分析</div>
+                <div class="skill-item">优化算法</div>
+                <div class="skill-item">数学建模</div>
+                <div class="skill-item">数据可视化</div>
+            </div>
+            <h3>其他技能</h3>
+            <div class="skills-container">
+                <div class="skill-item">Git版本控制</div>
+                <div class="skill-item">Linux系统</div>
+                <div class="skill-item">Docker</div>
+                <div class="skill-item">MS Office</div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <h2>荣誉奖项</h2>
+            <div class="awards-list">
+                <div class="award-card">
+                    <h3 class="award-title">教研社全国大学生数学建模大赛 省级一等奖</h3>
+                    <p class="award-desc">基于蔬菜销售数据，构建线性回归模型量化销量与定价关系，设计单目标规划模型优化补货策略，收益提升12%。</p>
+                </div>
+                <div class="award-card">
+                    <h3 class="award-title">美国大学生数学建模大赛 H奖</h3>
+                    <p class="award-desc">基于网球比赛动量动力学，构建EMMA模型量化动量趋势，预测比赛转折点准确率达82.8%。</p>
+                </div>
+                <div class="award-card">
+                    <h3 class="award-title">蓝桥杯软件赛Python程序设计 省级一等奖/国家级三等奖</h3>
+                    <p class="award-desc">程序设计竞赛，展示算法设计与实现能力。</p>
+                </div>
+                <div class="award-card">
+                    <h3 class="award-title">全国大学生计算机设计大赛 省级三等奖</h3>
+                    <p class="award-desc">计算机应用与设计能力竞赛。</p>
+                </div>
+                <div class="award-card">
+                    <h3 class="award-title">全国大学生数学竞赛 省级三等奖</h3>
+                    <p class="award-desc">数学理论与应用能力竞赛。</p>
+                </div>
+                <div class="award-card">
+                    <h3 class="award-title">长三角大学生金融创新实践大赛 省级三等奖</h3>
+                    <p class="award-desc">金融与科技融合创新实践。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>联系我</h3>
+            <div class="social-links">
+                <a href="mailto:zqy15979826810@163.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:15979826810" class="social-link">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2024 张青怡. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved user preference, if any
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateIcon();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Save user preference
+            const theme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+            localStorage.setItem('theme', theme);
+            
+            updateIcon();
+        });
+
+        function updateIcon() {
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize sections with slight offset for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
